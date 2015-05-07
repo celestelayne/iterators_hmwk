@@ -46,6 +46,16 @@ function addItem(price, title, quantity) {
 
 function updateSubTotal() {
 // Refactor this using our helper functions :D
-  var subTotalPrice = 0; // !! That won't do! Calculate the actual subtotal.
-  $subTotal.text("$" + price); 
+  var subTotalPrice = myUtils.myReduce(line_items, cb, 0);
+  var salesTax = subTotalPrice * 0.75;
+  $subTotal.text("$" + subTotalPrice); 
 }
+
+line_items.sort(function compare(a,b) {
+  if (a.description.toLowerCase < b.description.toLowerCase) {
+    return -1;
+  } if (a.description.toLowerCase > b.description.toLowerCase) {
+    return 1;
+  }
+  return 0;
+});

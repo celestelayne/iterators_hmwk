@@ -31,7 +31,7 @@
          val = cb(val, arr[i], i, arr)
       }
       return val;
-    
+    }
 
     myUtils.buildElement = function buildElement(tag, str){
         return "<" +tag+ ">" + str + "</" + tag + ">";
