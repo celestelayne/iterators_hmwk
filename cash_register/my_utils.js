@@ -14,12 +14,37 @@
             cb(arr[i], i, arr);
         }
     }
-    // myUtils.myMap
-    // myUtils.myReduce
     
-    // myUtils.buildElement
+    myUtils.myMap = function myMap(arr, cb){
+      var len = arr.length;
+      var newArr = [];
+      for(var i=0; i<len; i++){
+         newArr[i] = cb(arr[i], i, arr);
+      }
+      return newArr;
+    }
+
+    myUtils.myReduce = function myReduce(arr, cb, val){
+      var len = arr.length;
+      val = val || 0;
+      for(var i=0; i<len; i++){
+         val = cb(val, arr[i], i, arr)
+      }
+      return val;
     
-    // myUtils.toDollarAmount;
-    // myUtils.toCurrencyString;
+
+    myUtils.buildElement = function buildElement(tag, str){
+        return "<" +tag+ ">" + str + "</" + tag + ">";
+    }  
+
+    myUtils.toDollarAmount = function toDollarAmount(curr){
+        return curr.toFixed(2);
+    }
+
+
+    myUtils.toCurrencyString = function toCurrencyString(curr, sym) {
+        var sym = "$";
+        return sym + curr.toFixed(2); 
+    } 
     
 }.call(this))
